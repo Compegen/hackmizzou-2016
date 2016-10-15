@@ -73,7 +73,7 @@ rocky.on('draw', function(event) {
   //var cy = h / 2;
   
   // Set the time text
-  ctx.font = '42px bold Bitham';
+  ctx.font = '30px bolder Bitham';
   ctx.fillStyle = 'white';
 
   // Center align the text
@@ -95,7 +95,7 @@ function drawWeather(ctx, weather) {
   //weather.desc = "Atmosphere";
   //weather.fahrenheit = 65;
   
-  var temperatureString = weather.fahrenheit + ' ºF';
+  var temperatureString = weather.fahrenheit + ' ºF, ' + weather.desc;
   var conditionString = weather.desc;
   
   clothingString = checkTemperature(weather.fahrenheit, bounds); //Check temperature function for clothingString
@@ -104,7 +104,7 @@ function drawWeather(ctx, weather) {
   ctx.fillText(clothingString, ctx.canvas.unobstructedWidth/2, ctx.canvas.unobstructedHeight - 50);
   
   ctx.fillText(temperatureString, ctx.canvas.unobstructedWidth / 2, 5);
-  ctx.fillText(conditionString, ctx.canvas.unobstructedWidth / 2, 30);
+  //ctx.fillText(conditionString, ctx.canvas.unobstructedWidth / 2, 30);
 }
 
 function checkTemperature(temp, bounds) {
