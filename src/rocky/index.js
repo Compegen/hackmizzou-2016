@@ -36,6 +36,17 @@ rocky.on('message', function(event) {
 rocky.on('draw', function(event) {
   var ctx = event.context;
   var d = new Date();
+  
+  d = d.toLocaleTimeString();
+  d = d.split(":");
+  
+  if(d[0] < 12) {
+    d = d[0] + ":" + d[1] + " AM";
+  }
+  else {
+    if(d[0] != 12){ d[0] = d[0] % 12; }
+    d = d[0] + ":" + d[1] + " PM";
+  }
 
   // Clear the screen
   ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
@@ -54,6 +65,8 @@ rocky.on('draw', function(event) {
   var cx = w / 2;
   var cy = h / 2;
   
+  ctx.font = '42px light Bitham';
+  
   // Set the text color
   ctx.fillStyle = 'white';
 
@@ -61,7 +74,7 @@ rocky.on('draw', function(event) {
   ctx.textAlign = 'center';
 
   // Display the time, in the middle of the screen
-  ctx.fillText(d.toLocaleTimeString(), cx, cy, w);
+  ctx.fillText(d, cx, cy-20, w);
 });
 
 function drawWeather(ctx, weather) {
@@ -82,30 +95,6 @@ function drawWeather(ctx, weather) {
   clothingString = checkCondition(weather.desc);                 //Check conditions function for clothingString
   
   ctx.fillText(clothingString, ctx.canvas.unobstructedWidth/2,20);
-}
-
-function drawHand(ctx, cx, cy, angle, length, color) {
-  // Find the end points
-  var x2 = cx + Math.sin(angle) * length;
-  var y2 = cy - Math.cos(angle) * length;
-
-  // Configure how we want to draw the hand
-  ctx.lineWidth = 8;
-  ctx.strokeStyle = color;
-
-  // Begin drawing
-  ctx.beginPath();
-
-  // Move to the center point, then draw the line
-  ctx.moveTo(cx, cy);
-  ctx.lineTo(x2, y2);
-
-  // Stroke the line (output to display)
-  ctx.stroke();
-}
-
-function fractionToRadian(fraction) {
-  return fraction * 2 * Math.PI;
 }
 
 function checkTemperature(temp, bounds) {
