@@ -86,10 +86,30 @@ rocky.on('draw', function(event) {
 function drawWeather(ctx, weather) {
   // Create a string describing the weather
   //var weatherString = weather.celcius + 'ºC, ' + weather.desc;
-  var weatherString = weather.fahrenheit + 'ºF';
+  var weatherString = weather.fahrenheit + 'ºF' + "  " +weather.desc;
   
   // Draw the text, top center
-  ctx.fillStyle = 'white';
+  if (weather.desc=="Clear"){
+    ctx.fillStyle='#FFFFFF';
+  }
+  if (weather.desc=="Drizzle"||weather.desc=="Rain"){
+    ctx.fillStyle='#0000FF';
+  }
+  if (weather.desc=="Snow"){
+    ctx.fillStyle='#00FFFF';
+  }
+  if (weather.desc=='Clouds'){
+    ctx.fillStyle='#B2B2B2';
+  }
+  if (weather.desc=='Thunderstorm'){
+    ctx.fillStyle='#FFA31A';
+  }
+  if (weather.desc=='Extreme'){
+    ctx.fillStyle='#FF0000';
+  }
+  
+  
+  //ctx.fillStyle = 'white';
   ctx.textAlign = 'center';
   ctx.font = '24px Gothic';
   ctx.fillText(weatherString, ctx.canvas.unobstructedWidth / 2, 35);
