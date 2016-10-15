@@ -64,50 +64,47 @@ rocky.on('draw', function(event) {
   }
 
   // Determine the width and height of the display
-  var w = ctx.canvas.unobstructedWidth;
-  var h = ctx.canvas.unobstructedHeight;
+  //var w = ctx.canvas.unobstructedWidth;
+  //var h = ctx.canvas.unobstructedHeight;
 
   // Determine the center point of the display
   // and the max size of watch hands
-  var cx = w / 2;
-  var cy = h / 2;
+  //var cx = w / 2;
+  //var cy = h / 2;
   
-  ctx.font = '42px light Bitham';
-  
-  // Set the text color
+  // Set the time text
+  ctx.font = '42px bold Bitham';
   ctx.fillStyle = 'white';
 
   // Center align the text
   ctx.textAlign = 'center';
 
   // Display the time, in the middle of the screen
-  ctx.fillText(d, cx, cy-26, w);
+  ctx.fillText(d, ctx.canvas.unobstructedWidth/2, ctx.canvas.unobstructedHeight/2-26, ctx.canvas.unobstructedWidth);
 });
 
 function drawWeather(ctx, weather) {
-  // Create a string describing the weather
-  //var weatherString = weather.celcius + 'ºC, ' + weather.desc;
-  
-  
   
   ctx.fillStyle = colorScheme;
   ctx.textAlign = 'center';
   ctx.font = '24px Gothic';
   
-
   var bounds = [ -15, 10, 35, 55, 65, 80, 95, 105, 115 ];
           //       0   1   2   3   4   5   6    7    8
   
   //weather.desc = "Atmosphere";
   //weather.fahrenheit = 65;
   
-  var weatherString = weather.fahrenheit + 'ºF' + "\r\n" + weather.desc;
+  var temperatureString = weather.fahrenheit + ' ºF';
+  var conditionString = weather.desc;
   
   clothingString = checkTemperature(weather.fahrenheit, bounds); //Check temperature function for clothingString
   clothingString = checkCondition(weather.desc);                 //Check conditions function for clothingString
   
-  ctx.fillText(clothingString, ctx.canvas.unobstructedWidth/2, ctx.canvas.unobstructedHeight - 62);
-  ctx.fillText(weatherString, ctx.canvas.unobstructedWidth / 2, 5);
+  ctx.fillText(clothingString, ctx.canvas.unobstructedWidth/2, ctx.canvas.unobstructedHeight - 50);
+  
+  ctx.fillText(temperatureString, ctx.canvas.unobstructedWidth / 2, 5);
+  ctx.fillText(conditionString, ctx.canvas.unobstructedWidth / 2, 30);
 }
 
 function checkTemperature(temp, bounds) {
