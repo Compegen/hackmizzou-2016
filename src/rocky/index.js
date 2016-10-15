@@ -4,6 +4,7 @@ var rocky = require('rocky');
 // Global object to store weather data
 var weather;
 var clothingString;
+var colorScheme = ['white', 'black'];
 
 //var minuteCounter = 0;
 rocky.on('hourchange', function(event) {
@@ -80,13 +81,13 @@ rocky.on('draw', function(event) {
 function drawWeather(ctx, weather) {
   // Create a string describing the weather
   //var weatherString = weather.celcius + 'ºC, ' + weather.desc;
-  var weatherString = weather.fahrenheit + 'ºF, ' + weather.desc;
+  var weatherString = weather.fahrenheit + 'ºF';
   
   // Draw the text, top center
   ctx.fillStyle = 'white';
   ctx.textAlign = 'center';
-  ctx.font = '20px Gothic';
-  ctx.fillText(weatherString, ctx.canvas.unobstructedWidth / 2, 2);
+  ctx.font = '24px Gothic';
+  ctx.fillText(weatherString, ctx.canvas.unobstructedWidth / 2, 21);
 
   var bounds = [ -15, 10, 35, 55, 65, 80, 95, 105, 115 ];
           //       0   1   2   3   4   5   6    7    8
@@ -94,7 +95,7 @@ function drawWeather(ctx, weather) {
   clothingString = checkTemperature(weather.fahrenheit, bounds); //Check temperature function for clothingString
   clothingString = checkCondition(weather.desc);                 //Check conditions function for clothingString
   
-  ctx.fillText(clothingString, ctx.canvas.unobstructedWidth/2,20);
+  ctx.fillText(clothingString, ctx.canvas.unobstructedWidth/2, ctx.canvas.unobstructedHeight - 44);
 }
 
 function checkTemperature(temp, bounds) {
