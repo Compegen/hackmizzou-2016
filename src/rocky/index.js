@@ -3,7 +3,7 @@ var rocky = require('rocky');
 
 // Global object to store weather data
 var weather;
-var clothingString
+var clothingString;
 
 //var minuteCounter = 0;
 rocky.on('hourchange', function(event) {
@@ -53,23 +53,15 @@ rocky.on('draw', function(event) {
   // and the max size of watch hands
   var cx = w / 2;
   var cy = h / 2;
+  
+  // Set the text color
+  ctx.fillStyle = 'white';
 
-  // -20 so we're inset 10px on each side
-  var maxLength = (Math.min(w, h) - 20) / 2;
+  // Center align the text
+  ctx.textAlign = 'center';
 
-  // Calculate the minute hand angle
-  var minuteFraction = (d.getMinutes()) / 60;
-  var minuteAngle = fractionToRadian(minuteFraction);
-
-  // Draw the minute hand
-  drawHand(ctx, cx, cy, minuteAngle, maxLength, 'white');
-
-  // Calculate the hour hand angle
-  var hourFraction = (d.getHours() % 12 + minuteFraction) / 12;
-  var hourAngle = fractionToRadian(hourFraction);
-
-  // Draw the hour hand
-  drawHand(ctx, cx, cy, hourAngle, maxLength * 0.6, 'red');
+  // Display the time, in the middle of the screen
+  ctx.fillText(d.toLocaleTimeString(), cx, cy, w);
 });
 
 function drawWeather(ctx, weather) {
