@@ -4,9 +4,15 @@ var rocky = require('rocky');
 // Global object to store weather data
 var weather;
 
+//var minuteCounter = 0;
 rocky.on('hourchange', function(event) {
+	rocky.postMessage({'fetch': true});
   // Send a message to fetch the weather information (on startup and every hour)
-  rocky.postMessage({'fetch': true});
+// 	if(minuteCounter >= 15) {
+// 		minuteCounter = 0;
+// 		rocky.postMessage({'fetch': true});
+	//}
+ // minuteCounter++;
 });
 
 rocky.on('minutechange', function(event) {
@@ -17,7 +23,6 @@ rocky.on('minutechange', function(event) {
 rocky.on('message', function(event) {
   // Receive a message from the mobile device (pkjs)
   var message = event.data;
-  //var message = "Hello";
   if (message.weather) {
     // Save the weather data
     weather = message.weather;
