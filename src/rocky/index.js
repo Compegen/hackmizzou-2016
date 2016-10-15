@@ -3,6 +3,7 @@ var rocky = require('rocky');
 
 // Global object to store weather data
 var weather;
+var clothingString
 
 //var minuteCounter = 0;
 rocky.on('hourchange', function(event) {
@@ -75,7 +76,7 @@ function drawWeather(ctx, weather) {
   // Create a string describing the weather
   //var weatherString = weather.celcius + 'ºC, ' + weather.desc;
   var weatherString = weather.fahrenheit + 'ºF, ' + weather.desc;
-  var clothingString;
+  
   // Draw the text, top center
   ctx.fillStyle = 'white';
   ctx.textAlign = 'center';
@@ -144,6 +145,7 @@ function checkTemperature(temp, bounds) {
   else if (temp>bounds[7]) {
     return "Good Luck";
   }
+  return clothingString;
 }
 
 function checkCondition(desc) {
@@ -169,4 +171,5 @@ function checkCondition(desc) {
   else if (desc=="Extreme"){
     return "Extreme Weather Alert";
   }
+  return clothingString;
 }
