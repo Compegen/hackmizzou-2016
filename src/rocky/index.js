@@ -82,42 +82,36 @@ function drawWeather(ctx, weather) {
   ctx.font = '20px Gothic';
   ctx.fillText(weatherString, ctx.canvas.unobstructedWidth / 2, 2);
 
-  if (weather.fahrenheit<=-15)
-     {
-       clothingString="Stay Inside";
-     }
-  if (weather.fahrenheit>-15&&weather.fahrenheit<=10)
-    {
-      clothingString="Bundle Up";
+  var bounds = [ -15, 10, 35, 55, 65, 80, 95, 105, 115 ];
+          //       0   1   2   3   4   5   6    7    8
+  
+  if (weather.fahrenheit<=bounds[0]) {
+    clothingString="Stay Inside";
+  }
+  if (weather.fahrenheit>bounds[0]&&weather.fahrenheit<=bounds[1]) {
+    clothingString="Bundle Up";
+  }
+  if (weather.fahrenheit>bounds[1]&&weather.fahrenheit<=bounds[2]) {
+    clothingString="Winter Coat";
+  }
+  if (weather.fahrenheit>bounds[2]&&weather.fahrenheit<=bounds[3]) {
+    clothingString="Jeans & Hoodie";
+  }
+  if (weather.fahrenheit>bounds[3]&&weather.fahrenheit<=bounds[4]) {
+    clothingString="Jeans & T-Shirt";
+  }
+  if (weather.fahrenheit>bounds[4]&&weather.fahrenheit<=bounds[5]) {
+    clothingString="Shorts & T-Shirt";
     }
-  if (weather.fahrenheit>10&&weather.fahrenheit<=35)
-    {
-      clothingString="Winter Coat";
-    }
-  if (weather.fahrenheit>35&&weather.fahrenheit<=55)
-    {
-      clothingString="Jeans & Hoodie";
-    }
-  if (weather.fahrenheit>55&&weather.fahrenheit<=65)
-    {
-      clothingString="Jeans & T-Shirt";
-    }
-  if (weather.fahrenheit>65&&weather.fahrenheit<=80)
-    {
-      clothingString="Shorts & T-Shirt";
-    }
-  if (weather.fahrenheit>80&&weather.fahrenheit<=95)
-    {
-      clothingString="Shorts & Tank Top";
-    }
-  if (weather.fahrenheit>95&&weather.fahrenheit<=105)
-    {
-      clothingString="Swimsuit";
-    }
-  if (weather.fahrenheit>105)
-    {
-      clothingString="Good Luck";
-    }
+  if (weather.fahrenheit>bounds[5]&&weather.fahrenheit<=bounds[6]) {
+    clothingString="Shorts & Tank Top";
+  }
+  if (weather.fahrenheit>bounds[6]&&weather.fahrenheit<=bounds[7]) {
+    clothingString="Swimsuit";
+  }
+  if (weather.fahrenheit>bounds[7]) {
+    clothingString="Good Luck";
+  }
   ctx.fillText(clothingString, ctx.canvas.unobstructedWidth/2,20);
 }
 
