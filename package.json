@@ -17,7 +17,8 @@
         "sdkVersion": "3",
         "targetPlatforms": [
             "basalt",
-            "chalk"
+            "chalk",
+            "diorite"
         ],
         "uuid": "553c0d8f-a0f1-4e79-beb5-d7816e990848",
         "watchapp": {

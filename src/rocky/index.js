@@ -63,7 +63,7 @@ rocky.on('draw', function(event) {
   var hourAngle = fractionToRadian(hourFraction);
 
   // Draw the hour hand
-  drawHand(ctx, cx, cy, hourAngle, maxLength * 0.6, 'lightblue');
+  drawHand(ctx, cx, cy, hourAngle, maxLength * 0.6, 'red');
 });
 
 function drawWeather(ctx, weather) {
@@ -72,9 +72,9 @@ function drawWeather(ctx, weather) {
   var weatherString = weather.fahrenheit + 'ºF, ' + weather.desc;
 
   // Draw the text, top center
-  ctx.fillStyle = 'lightgray';
+  ctx.fillStyle = 'white';
   ctx.textAlign = 'center';
-  ctx.font = '14px Gothic';
+  ctx.font = '20px Gothic';
   ctx.fillText(weatherString, ctx.canvas.unobstructedWidth / 2, 2);
 }
 
