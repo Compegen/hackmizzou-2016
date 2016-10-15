@@ -88,28 +88,28 @@ function drawWeather(ctx, weather) {
   if (weather.fahrenheit<=bounds[0]) {
     clothingString="Stay Inside";
   }
-  if (weather.fahrenheit>bounds[0]&&weather.fahrenheit<=bounds[1]) {
+  else if (weather.fahrenheit>bounds[0]&&weather.fahrenheit<=bounds[1]) {
     clothingString="Bundle Up";
   }
-  if (weather.fahrenheit>bounds[1]&&weather.fahrenheit<=bounds[2]) {
+  else if (weather.fahrenheit>bounds[1]&&weather.fahrenheit<=bounds[2]) {
     clothingString="Winter Coat";
   }
-  if (weather.fahrenheit>bounds[2]&&weather.fahrenheit<=bounds[3]) {
+  else if (weather.fahrenheit>bounds[2]&&weather.fahrenheit<=bounds[3]) {
     clothingString="Jeans & Hoodie";
   }
-  if (weather.fahrenheit>bounds[3]&&weather.fahrenheit<=bounds[4]) {
+  else if (weather.fahrenheit>bounds[3]&&weather.fahrenheit<=bounds[4]) {
     clothingString="Jeans & T-Shirt";
   }
-  if (weather.fahrenheit>bounds[4]&&weather.fahrenheit<=bounds[5]) {
+  else if (weather.fahrenheit>bounds[4]&&weather.fahrenheit<=bounds[5]) {
     clothingString="Shorts & T-Shirt";
-    }
-  if (weather.fahrenheit>bounds[5]&&weather.fahrenheit<=bounds[6]) {
+  }
+  else if (weather.fahrenheit>bounds[5]&&weather.fahrenheit<=bounds[6]) {
     clothingString="Shorts & Tank Top";
   }
-  if (weather.fahrenheit>bounds[6]&&weather.fahrenheit<=bounds[7]) {
+  else if (weather.fahrenheit>bounds[6]&&weather.fahrenheit<=bounds[7]) {
     clothingString="Swimsuit";
   }
-  if (weather.fahrenheit>bounds[7]) {
+  else if (weather.fahrenheit>bounds[7]) {
     clothingString="Good Luck";
   }
   ctx.fillText(clothingString, ctx.canvas.unobstructedWidth/2,20);
