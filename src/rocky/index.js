@@ -4,6 +4,7 @@ var rocky = require('rocky');
 // Global object to store weather data
 var weather;
 var clothingString;
+var colorScheme = "white";
 
 //var minuteCounter = 0;
 rocky.on('hourchange', function(event) {
@@ -86,41 +87,27 @@ rocky.on('draw', function(event) {
 function drawWeather(ctx, weather) {
   // Create a string describing the weather
   //var weatherString = weather.celcius + 'ºC, ' + weather.desc;
-  var weatherString = weather.fahrenheit + 'ºF' + "  " +weather.desc;
-  
-  // Draw the text, top center
-  if (weather.desc=="Clear"){
-    ctx.fillStyle='#FFFFFF';
-  }
-  if (weather.desc=="Drizzle"||weather.desc=="Rain"){
-    ctx.fillStyle='#0000FF';
-  }
-  if (weather.desc=="Snow"){
-    ctx.fillStyle='#00FFFF';
-  }
-  if (weather.desc=='Clouds'){
-    ctx.fillStyle='#B2B2B2';
-  }
-  if (weather.desc=='Thunderstorm'){
-    ctx.fillStyle='#FFA31A';
-  }
-  if (weather.desc=='Extreme'){
-    ctx.fillStyle='#FF0000';
-  }
   
   
-  //ctx.fillStyle = 'white';
+  
+  ctx.fillStyle = colorScheme;
   ctx.textAlign = 'center';
   ctx.font = '24px Gothic';
-  ctx.fillText(weatherString, ctx.canvas.unobstructedWidth / 2, 35);
+  
 
   var bounds = [ -15, 10, 35, 55, 65, 80, 95, 105, 115 ];
           //       0   1   2   3   4   5   6    7    8
+  
+  //weather.desc = "Atmosphere";
+  //weather.fahrenheit = 65;
+  
+  var weatherString = weather.fahrenheit + 'ºF' + "\r\n" + weather.desc;
   
   clothingString = checkTemperature(weather.fahrenheit, bounds); //Check temperature function for clothingString
   clothingString = checkCondition(weather.desc);                 //Check conditions function for clothingString
   
   ctx.fillText(clothingString, ctx.canvas.unobstructedWidth/2, ctx.canvas.unobstructedHeight - 62);
+  ctx.fillText(weatherString, ctx.canvas.unobstructedWidth / 2, 5);
 }
 
 function checkTemperature(temp, bounds) {
@@ -158,24 +145,30 @@ function checkTemperature(temp, bounds) {
 function checkCondition(desc) {
   
   if (desc=="Thunderstorm") {
-    return "Rain Jacket";
+    colorScheme ='#FFD800';
+	return "Rain Jacket";
   }
   else if (desc=="Drizzle") {
-    return "Rain Jacket";
+    colorScheme ='#0000FF';
+	return "Rain Jacket";
   }
   else if (desc=="Rain") {
-    return "Rain Jacket";
+    colorScheme ='#0000FF';
+	return "Rain Jacket";
   }
   else if (desc=="Snow") {
+	colorScheme ='#00FFFF';
     return "Winter Jacket";
   }
   else if (desc=="Atmosphere") {
-    
+    colorScheme ='#C1C1C1';
   }
   else if (desc=="Clear"){
+	colorScheme ='#FFFFFF';
     
   }
   else if (desc=="Extreme"){
+	colorScheme ='#FF0000';
     return "Extreme Weather Alert";
   }
   return clothingString;
