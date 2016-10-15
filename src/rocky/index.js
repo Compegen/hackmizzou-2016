@@ -80,7 +80,15 @@ function drawWeather(ctx, weather) {
   ctx.fillStyle = 'white';
   ctx.textAlign = 'center';
   ctx.font = '20px Gothic';
-  ctx.fillText(weatherString, ctx.canvas.unobstructedWidth / 2, 2);
+  //ctx.fillText(weatherString, ctx.canvas.unobstructedWidth / 2, 2);
+  ctx.fillText("\nShorts & T-Shirt", ctx.canvas.unobstructedWidth/2,2);
+
+
+  
+//   if (weather.fahrenheit>=55&&weather.fahrenheit<=70)
+//     {
+//       ctx.fillText("\nShorts & T-Shirt", ctx.canvas.unobstructedWidth/2,6);
+//     }
 }
 
 function drawHand(ctx, cx, cy, angle, length, color) {
