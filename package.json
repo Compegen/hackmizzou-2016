@@ -1,0 +1,28 @@
+{
+    "author": "derek13f6@gmail.com",
+    "dependencies": {},
+    "keywords": [],
+    "name": "weather_app",
+    "pebble": {
+        "capabilities": [
+            "location"
+        ],
+        "displayName": "weather_app",
+        "enableMultiJS": true,
+        "messageKeys": [],
+        "projectType": "rocky",
+        "resources": {
+            "media": []
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "basalt",
+            "chalk"
+        ],
+        "uuid": "35c92a17-9a21-41a9-993c-8f3e70e72a7e",
+        "watchapp": {
+            "watchface": false
+        }
+    },
+    "version": "1.0.0"
+}
