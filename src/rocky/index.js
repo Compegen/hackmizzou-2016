@@ -84,56 +84,9 @@ function drawWeather(ctx, weather) {
 
   var bounds = [ -15, 10, 35, 55, 65, 80, 95, 105, 115 ];
           //       0   1   2   3   4   5   6    7    8
-   
-  if (weather.fahrenheit<=bounds[0]) {
-    clothingString="Stay Inside";
-  }
-  else if (weather.fahrenheit>bounds[0]&&weather.fahrenheit<=bounds[1]) {
-    clothingString="Bundle Up";
-  }
-  else if (weather.fahrenheit>bounds[1]&&weather.fahrenheit<=bounds[2]) {
-    clothingString="Winter Coat";
-  }
-  else if (weather.fahrenheit>bounds[2]&&weather.fahrenheit<=bounds[3]) {
-    clothingString="Jeans & Hoodie";
-  }
-  else if (weather.fahrenheit>bounds[3]&&weather.fahrenheit<=bounds[4]) {
-    clothingString="Jeans & T-Shirt";
-  }
-  else if (weather.fahrenheit>bounds[4]&&weather.fahrenheit<=bounds[5]) {
-    clothingString="Shorts & T-Shirt";
-  }
-  else if (weather.fahrenheit>bounds[5]&&weather.fahrenheit<=bounds[6]) {
-    clothingString="Shorts & Tank Top";
-  }
-  else if (weather.fahrenheit>bounds[6]&&weather.fahrenheit<=bounds[7]) {
-    clothingString="Swimsuit";
-  }
-  else if (weather.fahrenheit>bounds[7]) {
-    clothingString="Good Luck";
-  }
   
-  if (weather.desc=="Thunderstorm") {
-    clothingString="Rain Jacket";
-  }
-  else if (weather.desc=="Drizzle") {
-    clothingString="Rain Jacket";
-  }
-  else if (weather.desc=="Rain") {
-    clothingString="Rain Jacket";
-  }
-  else if (weather.desc=="Snow") {
-    clothingString="Winter Jacket";
-  }
-  else if (weather.desc=="Atmosphere") {
-    
-  }
-  else if (weather.desc=="Clear"){
-    
-  }
-  else if (weather.desc=="Extreme"){
-    clothingString="Extreme Weather Alert";
-  }
+  clothingString = checkTemperature(weather.fahrenheit, bounds); //Check temperature function for clothingString
+  clothingString = checkCondition(weather.desc);                 //Check conditions function for clothingString
   
   ctx.fillText(clothingString, ctx.canvas.unobstructedWidth/2,20);
 }
@@ -160,4 +113,60 @@ function drawHand(ctx, cx, cy, angle, length, color) {
 
 function fractionToRadian(fraction) {
   return fraction * 2 * Math.PI;
+}
+
+function checkTemperature(temp, bounds) {
+  
+  if (temp<=bounds[0]) {
+    return "Stay Inside";
+  }
+  else if (temp>bounds[0]&&temp<=bounds[1]) {
+    return "Bundle Up";
+  }
+  else if (temp>bounds[1]&&temp<=bounds[2]) {
+    return "Winter Coat";
+  }
+  else if (temp>bounds[2]&&temp<=bounds[3]) {
+    return "Jeans & Hoodie";
+  }
+  else if (temp>bounds[3]&&temp<=bounds[4]) {
+    return "Jeans & T-Shirt";
+  }
+  else if (temp>bounds[4]&&temp<=bounds[5]) {
+    return "Shorts & T-Shirt";
+  }
+  else if (temp>bounds[5]&&temp<=bounds[6]) {
+    return "Shorts & Tank Top";
+  }
+  else if (temp>bounds[6]&&temp<=bounds[7]) {
+    return "Swimsuit";
+  }
+  else if (temp>bounds[7]) {
+    return "Good Luck";
+  }
+}
+
+function checkCondition(desc) {
+  
+  if (desc=="Thunderstorm") {
+    return "Rain Jacket";
+  }
+  else if (desc=="Drizzle") {
+    return "Rain Jacket";
+  }
+  else if (desc=="Rain") {
+    return "Rain Jacket";
+  }
+  else if (desc=="Snow") {
+    return "Winter Jacket";
+  }
+  else if (desc=="Atmosphere") {
+    
+  }
+  else if (desc=="Clear"){
+    
+  }
+  else if (desc=="Extreme"){
+    return "Extreme Weather Alert";
+  }
 }
