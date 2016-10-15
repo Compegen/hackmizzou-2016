@@ -38,16 +38,22 @@ rocky.on('draw', function(event) {
   var ctx = event.context;
   var d = new Date();
   
-  d = d.toLocaleTimeString();
+  d = d.toLocaleTimeString(undefined, {hour12: "false"});
   d = d.split(":");
+  console.log(d);
   
-  if(d[0] < 12) {
-    d = d[0] + ":" + d[1] + " AM";
+  if(d[0] > 12) {
+    d[0] = d[0] % 12;
+    d[2] = "PM";
+  }
+  else if(d[0] < 12) {
+    d[2] = "AM";
   }
   else {
-    if(d[0] != 12){ d[0] = d[0] % 12; }
-    d = d[0] + ":" + d[1] + " PM";
+    d[2] = "PM";
   }
+  
+  d = d[0] + ":" + d[1] + " " + d[2];
 
   // Clear the screen
   ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
