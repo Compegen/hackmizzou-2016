@@ -21,7 +21,8 @@ Pebble.on('message', function(event) {
             // Convert from Kelvin
             'celcius': Math.round(weatherData.main.temp - 273.15),
             'fahrenheit': Math.round((weatherData.main.temp - 273.15) * 9 / 5 + 32),
-            'desc': weatherData.weather[0].main
+            'desc': weatherData.weather[0].main,
+            'id' : weatherData.weather[0].id
           }
         });
       });

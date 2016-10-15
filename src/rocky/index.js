@@ -84,7 +84,7 @@ function drawWeather(ctx, weather) {
 
   var bounds = [ -15, 10, 35, 55, 65, 80, 95, 105, 115 ];
           //       0   1   2   3   4   5   6    7    8
-  
+   
   if (weather.fahrenheit<=bounds[0]) {
     clothingString="Stay Inside";
   }
@@ -112,6 +112,29 @@ function drawWeather(ctx, weather) {
   else if (weather.fahrenheit>bounds[7]) {
     clothingString="Good Luck";
   }
+  
+  if (weather.desc=="Thunderstorm") {
+    clothingString="Rain Jacket";
+  }
+  else if (weather.desc=="Drizzle") {
+    clothingString="Rain Jacket";
+  }
+  else if (weather.desc=="Rain") {
+    clothingString="Rain Jacket";
+  }
+  else if (weather.desc=="Snow") {
+    clothingString="Winter Jacket";
+  }
+  else if (weather.desc=="Atmosphere") {
+    
+  }
+  else if (weather.desc=="Clear"){
+    
+  }
+  else if (weather.desc=="Extreme"){
+    clothingString="Extreme Weather Alert";
+  }
+  
   ctx.fillText(clothingString, ctx.canvas.unobstructedWidth/2,20);
 }
 
