@@ -75,20 +75,50 @@ function drawWeather(ctx, weather) {
   // Create a string describing the weather
   //var weatherString = weather.celcius + 'ºC, ' + weather.desc;
   var weatherString = weather.fahrenheit + 'ºF, ' + weather.desc;
-
+  var clothingString;
   // Draw the text, top center
   ctx.fillStyle = 'white';
   ctx.textAlign = 'center';
   ctx.font = '20px Gothic';
-  //ctx.fillText(weatherString, ctx.canvas.unobstructedWidth / 2, 2);
-  ctx.fillText("\nShorts & T-Shirt", ctx.canvas.unobstructedWidth/2,2);
+  ctx.fillText(weatherString, ctx.canvas.unobstructedWidth / 2, 2);
 
-
-  
-//   if (weather.fahrenheit>=55&&weather.fahrenheit<=70)
-//     {
-//       ctx.fillText("\nShorts & T-Shirt", ctx.canvas.unobstructedWidth/2,6);
-//     }
+  if (weather.fahrenheit<=-15)
+     {
+       clothingString="Stay Inside";
+     }
+  if (weather.fahrenheit>-15&&weather.fahrenheit<=10)
+    {
+      clothingString="Bundle Up";
+    }
+  if (weather.fahrenheit>10&&weather.fahrenheit<=35)
+    {
+      clothingString="Winter Coat";
+    }
+  if (weather.fahrenheit>35&&weather.fahrenheit<=55)
+    {
+      clothingString="Jeans & Hoodie";
+    }
+  if (weather.fahrenheit>55&&weather.fahrenheit<=65)
+    {
+      clothingString="Jeans & T-Shirt";
+    }
+  if (weather.fahrenheit>65&&weather.fahrenheit<=80)
+    {
+      clothingString="Shorts & T-Shirt";
+    }
+  if (weather.fahrenheit>80&&weather.fahrenheit<=95)
+    {
+      clothingString="Shorts & Tank Top";
+    }
+  if (weather.fahrenheit>95&&weather.fahrenheit<=105)
+    {
+      clothingString="Swimsuit";
+    }
+  if (weather.fahrenheit>105)
+    {
+      clothingString="Good Luck";
+    }
+  ctx.fillText(clothingString, ctx.canvas.unobstructedWidth/2,20);
 }
 
 function drawHand(ctx, cx, cy, angle, length, color) {
